@@ -14,7 +14,7 @@ function res = Egalisation (I1,I2)
   hist2 = imhist(I2);
   
   cumhist1 = cumsum(hist1) / numel(I1);
-  cumhist2 = cumsum(hist2)/ numel(I2);
+  cumhist2 = cumsum(hist2) / numel(I2);
   
   LUTSpe = zeros(256,1);
   for i = 1 : 256
@@ -23,21 +23,18 @@ function res = Egalisation (I1,I2)
     
     while cumhist2(abcs2) < cumhist1(abcs1)
       abcs2 = abcs2+1;
-      if abcs2 == 256;
-        abcs2 = max(LUTSpe);
-        break;
-      endif
     end
     
     
     
-    if (abcs2-1 != 0)
-     if(abs(cumhist2(abcs2-1)-cumhist1(abcs1)) < abs(cumhist2(abcs2)-cumhist1(abcs1)))
-       abcs2 = abcs2-1;
-     end   
-    end
+    %if (abcs2-1 != 0)
+     %if(abs(cumhist2(abcs2-1)-cumhist1(abcs1)) < abs(cumhist2(abcs2)-cumhist1(abcs1)))
+      % abcs2 = abcs2-1;
+     %end   
+    %end
     
     LUTSpe(i) = abcs2; 
+    fprintf("%d ,",cumsum(hist2)(i));
   endfor
   
   nouvelleImage = zeros(m,n);
@@ -66,3 +63,5 @@ function res = Egalisation (I1,I2)
   colormap(gray);
   subplot(3,3,8);
   imhist(rescale(nouvelleImage));
+  subplot(3,3,9);
+  bar(cumsum(nouvelleImage) / numel(nouvelleImage));
