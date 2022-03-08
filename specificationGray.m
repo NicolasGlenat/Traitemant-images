@@ -24,7 +24,7 @@
 
 function retval = specificationGray (I1, I2)
 
-    [m, n, can] = size(I1);  % m=nb lignes, n=nb colonnes, can=nb canaux
+  [m, n, can] = size(I1);  % m=nb lignes, n=nb colonnes, can=nb canaux
   [m2, n2, can2] = size(I2);  % m=nb lignes, n=nb colonnes, can=nb canaux
   if(can > 1)
       I1 = rgb2gray(I1);    % si l’image est en couleur, la transformer en NG
@@ -48,7 +48,7 @@ function retval = specificationGray (I1, I2)
   endfor
   
   nouvelleImage = LUTSpe(double(I1)+1);
-  cumhistNouvelle = cumsum(nouvelleImage) / numel(nouvelleImage);
+  cumhistNouvelle = cumsum(imhist(rescale(nouvelleImage))) / numel(nouvelleImage);
   
   subplot(3,3,1);
   imshow(I1);
