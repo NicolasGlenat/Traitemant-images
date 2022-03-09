@@ -70,10 +70,13 @@ function retval = SpecificationColorDeux (I1, I2)
   imshow(I1);
   subplot(3,4,2);
   imhist(I1(:,:,1));
+  title("Rouge");
   subplot(3,4,3);
   imhist(I1(:,:,2));
+  title("Vert");
   subplot(3,4,4);
   imhist(I1(:,:,3));
+  title("Bleu");
   
   subplot(3,4,5);
   imshow(I2);
@@ -92,3 +95,35 @@ function retval = SpecificationColorDeux (I1, I2)
   imhist(rescale(nouvelleImage(:,:,2)));
   subplot(3,4,12);
   imhist(rescale(nouvelleImage(:,:,3)));
+  
+  figure
+  subplot(3,3,1);
+  bar(cumhist1R);
+  title("Rouge");
+  subplot(3,3,2);
+  bar(cumhist1G);
+  title("Vert");
+  subplot(3,3,3);
+  bar(cumhist1B);
+  title("Bleu");
+  
+  subplot(3,3,4);
+  bar(cumhist2R);
+  subplot(3,3,5);
+  bar(cumhist2G);
+  subplot(3,3,6);
+  bar(cumhist2B);
+  
+  cumhistNR = cumsum(imhist(rescale(nouvelleImage(:,:,1)))) / numel(nouvelleImage(:,:,1));
+  cumhistNG = cumsum(imhist(rescale(nouvelleImage(:,:,2)))) / numel(nouvelleImage(:,:,2));
+  cumhistNB = cumsum(imhist(rescale(nouvelleImage(:,:,3)))) / numel(nouvelleImage(:,:,3));
+
+  
+  subplot(3,3,7);
+  bar(cumhistNR);
+  subplot(3,3,8);
+  bar(cumhistNG);
+  subplot(3,3,9);
+  bar(cumhistNB);
+
+
