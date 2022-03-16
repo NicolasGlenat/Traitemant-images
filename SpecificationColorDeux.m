@@ -65,36 +65,47 @@ function retval = SpecificationColorDeux (I1, I2)
   
   nouvelleImage = cat(3, R, G, B);
   cumhistNouvelle = cumsum(nouvelleImage) / numel(nouvelleImage);
-    
   subplot(3,4,1);
   imshow(I1);
   subplot(3,4,2);
-  imhist(I1(:,:,1));
+  ##imhist(rescale(I1(:,:,1)));
+  bar(rescale(hist1R/sum(hist1R)));
   title("Rouge");
   subplot(3,4,3);
-  imhist(I1(:,:,2));
+  ##imhist(rescale(I1(:,:,2)));
+  bar(rescale(hist1G/sum(hist1G)));
   title("Vert");
   subplot(3,4,4);
-  imhist(I1(:,:,3));
+  ##imhist(rescale(I1(:,:,3)));
+  bar(rescale(hist1B/sum(hist1B)));
   title("Bleu");
   
   subplot(3,4,5);
   imshow(I2);
   subplot(3,4,6);
-  imhist(I2(:,:,1));
+  ##imhist(rescale(I2(:,:,1)));
+  bar(rescale(hist2R/sum(hist2R)));
   subplot(3,4,7);
-  imhist(I2(:,:,2));
+  ##imhist(rescale(I2(:,:,2)));
+  bar(rescale(hist2G/sum(hist2G)));
   subplot(3,4,8);
-  imhist(I2(:,:,3));
+  ##imhist(rescale(I2(:,:,3)));
+  bar(rescale(hist2B/sum(hist2B)));
   
   subplot(3,4,9);
   imshow(rescale(nouvelleImage));
   subplot(3,4,10);
-  imhist(rescale(nouvelleImage(:,:,1)));
+  ##imhist(rescale(nouvelleImage(:,:,1)));
+  nvhistR = imhist(rescale(nouvelleImage(:,:,1)));
+  bar(rescale(nvhistR/sum(nvhistR)));
   subplot(3,4,11);
-  imhist(rescale(nouvelleImage(:,:,2)));
+  ##imhist(rescale(nouvelleImage(:,:,2)));
+  nvhistG = imhist(rescale(nouvelleImage(:,:,2)));
+  bar(rescale(nvhistG/sum(nvhistG)));
   subplot(3,4,12);
-  imhist(rescale(nouvelleImage(:,:,3)));
+  ##imhist(rescale(nouvelleImage(:,:,3)));
+  nvhistB = imhist(rescale(nouvelleImage(:,:,3)));
+  bar(rescale(nvhistB/sum(nvhistB)));
   
   figure
   subplot(3,3,1);
@@ -125,5 +136,15 @@ function retval = SpecificationColorDeux (I1, I2)
   bar(cumhistNG);
   subplot(3,3,9);
   bar(cumhistNB);
-
+  
+  ##troisdPlot(nouvelleImage);
+  figure;
+  scatter3(I1(:,:,1),I1(:,:,2),I1(:,:,3),1,'MarkerEdgeColor');
+  colorbar;
+  figure
+  scatter3(I2(:,:,1),I2(:,:,2),I2(:,:,3),1);
+  colorbar;
+  figure
+  scatter3(nouvelleImage(:,:,1),nouvelleImage(:,:,2),nouvelleImage(:,:,3),1);
+  colorbar;
 

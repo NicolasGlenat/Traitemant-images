@@ -112,27 +112,27 @@ function retval = specificationColor (I1, I2)
   subplot(3,4,1);
   imshow(I1);
   subplot(3,4,2);
-  imhist(I1(:,:,1));
+  imhist(I1(:,:,1)/numel(I1));
   subplot(3,4,3);
-  imhist(I1(:,:,2));
+  imhist(I1(:,:,2)/numel(I1));
   subplot(3,4,4);
-  imhist(I1(:,:,3));
+  imhist(I1(:,:,3)/numel(I1));
   
   subplot(3,4,5);
   imshow(I2);
   subplot(3,4,6);
-  imhist(I2(:,:,1));
+  imhist(I2(:,:,1)/numel(I2));
   subplot(3,4,7);
-  imhist(I2(:,:,2));
+  imhist(I2(:,:,2)/numel(I2));
   subplot(3,4,8);
-  imhist(I2(:,:,3));
+  imhist(I2(:,:,3)/numel(I2));
   
   subplot(3,4,9);
   imshow(nouvelleImage,[]);
   subplot(3,4,10);
-  imhist(nouvelleImage(:,:,1));
+  imhist(nouvelleImage(:,:,1)/numel(nouvelleImage));
   subplot(3,4,11);
-  imhist(nouvelleImage(:,:,2));
+  imhist(nouvelleImage(:,:,2)/numel(nouvelleImage));
   subplot(3,4,12);
-  imhist(nouvelleImage(:,:,3));
+  imhist(nouvelleImage(:,:,3)/numel(nouvelleImage));
 
