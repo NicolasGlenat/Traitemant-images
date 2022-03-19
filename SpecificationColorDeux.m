@@ -139,12 +139,29 @@ function retval = SpecificationColorDeux (I1, I2)
   
   ##troisdPlot(nouvelleImage);
   figure;
+  imshow(I1);
+  figure;
   scatter3(I1(:,:,1),I1(:,:,2),I1(:,:,3),1,'MarkerEdgeColor');
-  colorbar;
+  title("Image originale");
+  xlabel("Rouge",'FontSize',22,'FontWeight','bold');
+  ylabel("Vert",'FontSize',22,'FontWeight','bold');
+  zlabel("Bleu",'FontSize',22,'FontWeight','bold');
+  
   figure
+  imshow(I2);
+  figure;
   scatter3(I2(:,:,1),I2(:,:,2),I2(:,:,3),1);
-  colorbar;
+  title("Image reference");
+  xlabel("Rouge",'FontSize',22,'FontWeight','bold');
+  ylabel("Vert",'FontSize',22,'FontWeight','bold');
+  zlabel("Bleu",'FontSize',22,'FontWeight','bold');
+  
   figure
+  imshow(rescale(nouvelleImage));
+  figure;
   scatter3(nouvelleImage(:,:,1),nouvelleImage(:,:,2),nouvelleImage(:,:,3),1);
-  colorbar;
+  title("Image Finale");
+  xlabel("Rouge",'FontSize',22,'FontWeight','bold');
+  ylabel("Vert",'FontSize',22,'FontWeight','bold');
+  zlabel("Bleu",'FontSize',22,'FontWeight','bold');
 
